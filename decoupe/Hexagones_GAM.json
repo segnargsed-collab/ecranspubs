@@ -12,35 +12,44 @@
     "background": "osm"
   },
   "layers": [
-  {
-    "id": "hexagones",
-    "name": "Hexagones 300 m",
-    "source": {
-      "geojson": "https://raw.githubusercontent.com/segnargsed-collab/ecranspubs/main/decoupe/Grenoble-Alpes_M%C3%A9tropole_grille_hex_300m_2.geojson"
-    },
-    "osmTags": "id~.*",
-    "tagRenderings": [
-      {
-        "id": "status",
-        "question": "État de la zone",
-        "type": "select",
-        "values": [
-          { "value": "todo", "label": "À faire" },
-          { "value": "doing", "label": "En cours" },
-          { "value": "done", "label": "Terminé" }
-        ]
-      }
-    ],
-    "style": {
-      "color": {
-        "todo": "#cccccc",
-        "doing": "#ffcc00",
-        "done": "#00aa55"
+    {
+      "id": "hexagones",
+      "name": "Hexagones 300 m",
+      "source": {
+        "geojson": "https://raw.githubusercontent.com/segnargsed-collab/ecranspubs/main/decoupe/Grenoble-Alpes_M%C3%A9tropole_grille_hex_300m_2.geojson"
       },
-      "fillOpacity": 0.5,
-      "stroke": "#333333",
-      "strokeWidth": 1
+      "osmTags": "id~.*",
+      "tagRenderings": [
+        {
+          "id": "status",
+          "question": "État de la zone",
+          "type": "select",
+          "values": [
+            {
+              "value": "todo",
+              "label": "À faire"
+            },
+            {
+              "value": "doing",
+              "label": "En cours"
+            },
+            {
+              "value": "done",
+              "label": "Terminé"
+            }
+          ]
+        }
+      ],
+      "style": {
+        "color": {
+          "todo": "#cccccc",
+          "doing": "#ffcc00",
+          "done": "#00aa55"
+        },
+        "fillOpacity": 0.5,
+        "stroke": "#333333",
+        "strokeWidth": 1
+      }
     }
-  }
-]
+  ]
 }
