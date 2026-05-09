@@ -1,8 +1,16 @@
 {
   "id": "grenoble-hexagones",
   "title": "Hexagones Grenoble Métropole",
-  "description": "Suivi collaboratif par zones (300 m)",
+  "shortDescription": "Suivi collaboratif par zones (300 m)",
+  "description": "Suivi collaboratif par zones (300 m) sur Grenoble-Alpes Métropole",
   "icon": "mdi:hexagon-multiple",
+  "version": "0.1",
+  "startLat": 45.188,
+  "startLon": 5.724,
+  "startZoom": 12,
+  "mapRendering": {
+    "background": "osm"
+  },
   "layers": [
     {
       "id": "hexagones",
