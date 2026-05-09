@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Mini Tasking Manager – Hexagones GAM</title>
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; }
+  #map { width: 100%; height: 100%; }
+  .status-todo { fill: #cccccc; }
+  .status-doing { fill: #ffcc00; }
+  .status-done { fill: #00aa55; }
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-omnivore@0.3.4/leaflet-omnivore.min.js"></script>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script>
+const map = L.map('map').setView([45.188, 5.724], 12);
+
+// Fond OSM
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19
+}).addTo(map);
+
+// URL de ta grille
+const geojsonUrl =
+  "https://raw.githubusercontent.com/segnargsed-collab/ecranspubs/main/decoupe/Grenoble-Alpes_M%C3%A9tropole_grille_hex_300m_2.geojson";
+
+// Charger l'état depuis localStorage
+function loadStatus(id) {
+  return localStorage.getItem("hex-status-" + id) || "todo";
+}
+
+// Sauvegarder l'état
+function saveStatus(id, status) {
+  localStorage.setItem("hex-status-" + id, status);
+}
+
+// Style dynamique
+function styleFeature(feature) {
+  const id = feature.properties.id || feature.id;
+  const status = loadStatus(id);
+  return {
+    color: "#333",
+    weight: 1,
+    fillOpacity: 0.5,
+    fillColor:
+      status === "done" ? "#00aa55" :
+      status === "doing" ? "#ffcc00" :
+      "#cccccc"
+  };
+}
+
+// Interaction
+function onEachFeature(feature, layer) {
+  const id = feature.properties.id || feature.id;
+
+  layer.on("click", () => {
+    const current = loadStatus(id);
+    const next =
+      current === "todo" ? "doing" :
+      current === "doing" ? "done" : "todo";
+
+    saveStatus(id, next);
+    layer.setStyle(styleFeature(feature));
+  });
+
+  layer.bindPopup("Zone " + id + "<br>État : " + loadStatus(id));
+}
+
+// Charger la grille
+fetch(geojsonUrl)
+  .then(r => r.json())
+  .then(data => {
+    L.geoJSON(data, {
+      style: styleFeature,
+      onEachFeature: onEachFeature
+    }).addTo(map);
+  });
+</script>
+
+</body>
+</html>
