@@ -1,6 +1,7 @@
 id: ecran_numerique_vitrine
 name: Écran numérique vitrine
-version: 2
+version: 3
+api: 1.1
 author: Contributeurs OSM Grenoble
 description: |
   Preset pour cartographier les écrans numériques publicitaires en vitrine.
