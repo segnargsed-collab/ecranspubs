@@ -62,12 +62,14 @@
   .tag.editable { border-color: var(--accent-dim); background: #0d1f14; }
   .tag.editable .tag-key { color: #86efac; }
   .tag.editable .tag-val { color: #bbf7d0; font-style: italic; }
+  .version-note { font-family: var(--mono); font-size: 0.7rem; color: var(--muted);
+    text-align: center; padding: 0.5rem; }
 </style>
 </head>
 <body>
 <div class="card">
   <div class="header">
-    <div class="badge"><span class="dot"></span>EveryDoor Plugin v1</div>
+    <div class="badge"><span class="dot"></span>EveryDoor Plugin v2</div>
     <h1>Écran numérique vitrine</h1>
     <p class="subtitle">Plugin OSM — advertising=board indoor</p>
   </div>
@@ -81,25 +83,26 @@
       Ouvrez-le depuis le gestionnaire de fichiers — EveryDoor s'ouvre automatiquement.<br>
       Ou : <strong>Réglages → Plugins → +</strong> et sélectionnez le fichier.
     </p>
+    <p class="version-note">v2 — structure plugin.yaml corrigée</p>
   </div>
 
   <div class="steps-section">
-    <p class="section-title">Installation pas à pas</p>
+    <p class="section-title">Utilisation</p>
     <div class="step">
       <div class="step-num">1</div>
-      <div class="step-text">Téléchargez le fichier <code>.edp</code> ci-dessus sur votre téléphone</div>
+      <div class="step-text">Installez le plugin via le bouton ci-dessus</div>
     </div>
     <div class="step">
       <div class="step-num">2</div>
-      <div class="step-text">Ouvrez-le depuis le gestionnaire de fichiers — EveryDoor s'ouvre automatiquement</div>
+      <div class="step-text">Dans EveryDoor, pointez l'endroit sur la carte et appuyez <code>+</code></div>
     </div>
     <div class="step">
       <div class="step-num">3</div>
-      <div class="step-text">Ou bien : EveryDoor → <code>Réglages</code> → <code>Plugins</code> → <code>+</code> → sélectionnez le fichier</div>
+      <div class="step-text">Recherchez <code>écran</code>, <code>vitrine</code> ou <code>panneau</code></div>
     </div>
     <div class="step">
       <div class="step-num">4</div>
-      <div class="step-text">Recherchez <code>écran</code> ou <code>vitrine</code> dans l'app pour trouver le preset</div>
+      <div class="step-text">Tous les tags sont posés automatiquement — saisissez uniquement la <code>taille</code></div>
     </div>
   </div>
 
@@ -117,14 +120,14 @@
       <div class="tag"><span class="tag-key">visibility</span><span class="tag-val">house</span></div>
       <div class="tag"><span class="tag-key">legal_type:FR</span><span class="tag-val">publicité</span></div>
       <div class="tag editable"><span class="tag-key">size</span><span class="tag-val">à saisir</span></div>
-      <div class="tag editable"><span class="tag-key">description</span><span class="tag-val">pré-rempli</span></div>
+      <div class="tag editable"><span class="tag-key">check_date</span><span class="tag-val">optionnel</span></div>
     </div>
   </div>
 </div>
 
 <script>
-  // .edp embedded as base64 — fully self-contained, no server needed
-  const edpBase64 = "UEsDBBQAAAAIANCbqVz8Ypgw6AEAAEYEAAALABwAcGx1Z2luLnlhbWxVVAkAA1iL/2lYi/9pdXgLAAEEAAAAAAQAAAAAhVJLbtwwDN37FMSs2gBBkS69TdCuigZN9wNa4thEZEnRZ5rpDXqTzjnmYqX8iz1ZdMnfe+R7tNhTDZc/KqAFm/vLOfBLJjhyCmyp0hRVYJ/Y2RoeA0VK4F0OoDAk1wb0HVMAQxEu5wISVygRfG4MK07IMgpkF9wjhThg3lWYU+dCDffOSq3JiXKI8P3pG3wNZF1jqKr8wBzrCgC1zCaObNtPVBj3QkgD335CL20A9j+nlZ6EbRy7N8A1NA6DnguWe0ykaxAtiOyUZqtd2Xt3oribcgat3vvgvCCdavCBjzI5F6lFs08nT/WXH/WizeU8153CUegRek7nnq3LccvUU4zYyoHK9XK+YjRTJbKYJs13c2vM3ruQZP3O/VIY532OcmvDhsumnRCM+UgYVIciew0p5EknCv0i1O1k9RKuFS3xu8tuV/ovKc2tPIZZYjwcWIjbsePAZPSKcrD6iX/TNvPw9p/bwn1H6vlhFj8mMUYcreGARg6t3uAX4JHLYENG1PuJbAzBB4OhlYe86XB4zPLD/eVvkn/8OOr7TCJfnBcb3BW5XtMQeoOKOmc0lUehV/n3m8+7mXW1/Ib8+qiBQl8lr5g0HTAbMXn3/uMXhxbmRZ0tryQECI5lUMzA7QaqDO31rOlqgX9QSwECHgMUAAAACADQm6lc/GKYMOgBAABGBAAACwAYAAAAAAABAAAApIEAAAAAcGx1Z2luLnlhbWxVVAUAA1iL/2l1eAsAAQQAAAAABAAAAABQSwUGAAAAAAEAAQBRAAAALQIAAAAA";
+  // plugin v2 — id + addTags + standard:false corrigés
+  const edpBase64 = "UEsDBBQAAAAIAFFyqlwx2uiIDwIAAIAEAAALABwAcGx1Z2luLnlhbWxVVAkAA7qTAGq6kwBqdXgLAAEEAAAAAAQAAAAAjVNLbtRAEN37FKVZQQSRkmVvg2CFQGT2o7JdY5fS7jZd7SGDuAC3YMmcwxej2p52PIoC7Nz1ea/q1TPXBqgK6HZu6CjwV4F2B46BHRUOOzIw/kxp0PR4mvKQ8wcKwt4ZuC1wiK0PBu6801w5RBqCwKf7j/AhkPOlpaImqQL3cer4UQB8DiQUofdDgApD9E3AvmUKYElgPCVaWfEK9ENpueKIrK1ALk9yrWhbP8jUGLEREJ1DkWU8CehsvsOYIDpy8Q0IDZbAopay1S+SCOMvEGThcF0U/TSYGEV9QZqUAviXPqkmUuhkLgd4e95qea4r0zsvOJ6W0BPuEqq5UQ3s8sb9nqsWmxUOOkc4zBOoHnkArPVmUdd0jYHSY6jPCRn63odoQFr/rUKZobCut//TjY5VYFIr6YmJ8n7sap9MsTmSbM4xi67e9cH3inQ00Ac+aGdOUoN2F489mfdfzHM1rK9w9s8MncNDx07Pf8nUkYhqYqDynZ6v4kUxYfWiFt9s/ro96HmES7acJm2VIMcvrLx5boDlsDPBnsnWKxNMprrn73QZuWupeniX1ZCoSqnEBvZolbl4Qln6Z0iLJVmdYzu7+ZXF0Ojvd9Xi9Bum/6Qbf0c19et5ngfSfSTzT3KrTx/j9OwtVtR6W1O6HD0auLm63WTWZcZL6hRRVeCQFFAzTldakVWpbVfn3VaUfwBQSwECHgMUAAAACABRcqpcMdroiA8CAACABAAACwAYAAAAAAABAAAApIEAAAAAcGx1Z2luLnlhbWxVVAUAA7qTAGp1eAsAAQQAAAAABAAAAABQSwUGAAAAAAEAAQBRAAAAVAIAAAAA";
 
   const binary = atob(edpBase64);
   const bytes = new Uint8Array(binary.length);
