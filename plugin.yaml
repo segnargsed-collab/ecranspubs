@@ -1,0 +1,50 @@
+id: ecran_numerique_vitrine
+name: Écran numérique vitrine
+version: 2
+author: Contributeurs OSM Grenoble
+description: |
+  Preset pour cartographier les écrans numériques publicitaires en vitrine.
+  Tous les tags sont posés automatiquement, seule la taille est à saisir.
+
+presets:
+  ecran_numerique_vitrine:
+    name: Écran numérique vitrine
+    terms:
+      - écran
+      - vitrine
+      - publicité
+      - numérique
+      - digital
+      - affichage
+      - panneau
+    tags:
+      advertising: board
+      support: showcase
+    addTags:
+      advertising: board
+      animated: screen
+      indoor: "yes"
+      land_property: private
+      legal_type:FR: publicité
+      location: indoor
+      luminous: "yes"
+      message: commercial
+      sides: "1"
+      support: showcase
+      visibility: house
+      description: "Écran numérique - vitrine"
+    fields:
+      - ecranSize
+      - ecranCheckDate
+    standard: false
+
+fields:
+  ecranSize:
+    label: "Taille (largeur*hauteur en mètres)"
+    key: size
+    type: text
+    placeholder: "ex: 1*2"
+  ecranCheckDate:
+    label: "Date de vérification"
+    key: check_date
+    type: text
